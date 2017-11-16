@@ -32,28 +32,45 @@ var scoreCal = function (theNumber){
     	$("#totalScore").text(userTotal);
     	console.log(userTotal);
 
+// One one game 
     	if (userTotal == randomVar){ 
 			wins++;
-			alert("this works.");
-			$("#numberWin").text(wins);			
+			alert("Good job! Keep at it.");
+			$("#numberWin").text(wins);	
+			restart();		
 		}
 
-
+// Loss one game 
 		if (userTotal > randomVar){
 			losses--;
 			$("#numberLoss").text(losses);
-
+			restart();	
+// Loss errthang
 		}
 		if (losses == 0){
 			alert("GAME OVA SUCKA!");
 			location.reload();
 		}
+// Won errthang 
 		if (wins == 10){
-			alert("Good job!");
+			alert("You did it! Now leave.");
 			location.reload();
 		}
 
 
+
+};
+
+// Refreshing the game to continue winning. 
+var restart = function() {
+	randomVar = Math.floor(Math.random()*3*9); 
+	$("#randomNum").text(randomVar);
+	userTotal=0;
+	$("totalScore").text(userTotal);
+	Pink= Math.floor(Math.random() * 11) + 1;
+  	Blue= Math.floor(Math.random() * 11) + 1;
+  	Brown= Math.floor(Math.random() * 11) + 1;
+  	Green= Math.floor(Math.random() * 11) + 1;
 
 };
 
